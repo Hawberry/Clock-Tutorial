@@ -21,18 +21,25 @@ public class Clocks : MonoBehaviour
 		Quaternion secondsRotationQuat = Quaternion.Euler(secondsRotation); 
 		secondHand.transform.rotation = secondsRotationQuat;
 
-		DateTime time = DateTime.Now;
-		int minutes = time.Minutes;
-		float minutes_normalized = Minutes / 60f;
-		float minutes_degrees = Minutes_normalized * 360f;
-		float clockwise_Minutes = 360f - minutes_degrees;
+		int minutes = time.Minute;
+		float minutes_normalized = minutes / 60f;
+		float minutes_degrees = minutes_normalized * 360f;
+		float clockwise_minutes = 360f - minutes_degrees;
 
 
-		Vector3 secondsRotation = new Vector3(0f, 0f, clockwise_seconds);
-		Quaternion secondsRotationQuat = Quaternion.Euler(secondsRotation); 
-		secondHand.transform.rotation = secondsRotationQuat;
+		Vector3 minutesRotation = new Vector3(0f, 0f, clockwise_minutes);
+		Quaternion minutesRotationQuat = Quaternion.Euler(minutesRotation); 
+		minuteHand.transform.rotation = minutesRotationQuat;
+
+		int hours = time.Hour;
+		float hours_normalized = hours / 12f;
+		float hours_degrees = hours_normalized * 360f;
+		float clockwise_hours = 360f - hours_degrees;
 
 
+		Vector3 hoursRotation = new Vector3(0f, 0f, clockwise_hours);
+		Quaternion hoursRotationQuat = Quaternion.Euler(hoursRotation); 
+		hourHand.transform.rotation = hoursRotationQuat;
 
 	}
 }
